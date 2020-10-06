@@ -5,13 +5,18 @@ import com.mikepenz.credsshowcase.helper.FunSdk
 
 class CustomApplication : Application() {
 
+    init {
+        System.loadLibrary("protected")
+    }
+
+    private external fun getSdkKey(): String
+
+    private external fun getSdkSecret(): String
+
     override fun onCreate() {
         super.onCreate()
 
         // source
-        FunSdk.init("amazing-key", "super-secure-secret")
-
-        // resources
-        FunSdk.init(getString(R.string.key), getString(R.string.secret))
+        FunSdk.init(getSdkKey(), getSdkSecret())
     }
 }
