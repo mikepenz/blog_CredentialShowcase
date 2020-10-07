@@ -1,6 +1,7 @@
 package com.mikepenz.credsshowcase
 
 import android.app.Application
+import android.content.Context
 import com.mikepenz.credsshowcase.helper.FunSdk
 
 class CustomApplication : Application() {
@@ -9,14 +10,14 @@ class CustomApplication : Application() {
         System.loadLibrary("protected")
     }
 
-    private external fun getSdkKey(): String
+    private external fun getSdkKey(context: Context): String
 
-    private external fun getSdkSecret(): String
+    private external fun getSdkSecret(context: Context): String
 
     override fun onCreate() {
         super.onCreate()
 
         // source
-        FunSdk.init(getSdkKey(), getSdkSecret())
+        FunSdk.init(getSdkKey(this), getSdkSecret(this))
     }
 }
