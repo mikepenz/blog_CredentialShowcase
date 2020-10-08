@@ -5,6 +5,6 @@ include $(CLEAR_VARS)
 LOCAL_MODULE    := protected
 
 # specify the src files to include in the native lib
-LOCAL_SRC_FILES := protected.c
+LOCAL_SRC_FILES := $(LOCAL_PATH)/../../$(BUILD_VARIANT)/jni/protected.c
 
 include $(BUILD_SHARED_LIBRARY)
